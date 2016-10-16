@@ -1,0 +1,91 @@
+<head>
+  <title>courseraNewsAgg</title>
+</head>
+
+<body>
+</body>
+
+<template name="mainLayout">
+  {{>navbar}}
+  {{>Template.dynamic template=content }}
+</template>
+
+<template name="homePage">
+  <div class="container">
+    <h1> Welcome to news aggregator site </h1>
+
+    {{#if currentUser}}
+      {{>addWebsite}}
+    {{/if}}
+
+    {{> websiteList}}
+  </div>
+</template>
+
+<template name="websiteList">
+  <h2 >Most popular websites around you:  {{testParam}}</h2>
+
+  <ul class="list-group">
+    {{#each websites}}
+      <li class="list-group-item">
+        <div class="col-md-8">
+          <a href={{link}}>{{link}}</a><br>
+          Created by: <b>{{getuser author}}</b>  On : {{createdAt}}<br>
+           Upvote = <b>{{upvote}}</b> , Downvote = <b>{{downvote}}</b><br>
+           {{desc}}
+         </div>
+        <div class="col-md-4 btn_collection">
+          <small class="website-list-css">
+            <button class="btn btn_list_right btn-warning js_btn_downvote"><span class="glyphicon glyphicon-arrow-down"></span>  Downvote</button>
+              <span class="btn-group">
+              </span>
+          </small>
+          <small class="website-list-css">
+              <span class="btn-group">
+                  <button class="btn btn_list_right btn-success js_btn_upvote"><span class="glyphicon glyphicon-arrow-up"></span>   Upvote</button>
+              </span>
+          </small>
+          <small class="website-list-css">
+            <button class="btn btn_list_right btn-danger js_btn_delete"><span class="glyphicon glyphicon-trash"></span>   Delete</button>
+          </small>
+        </div>
+      </li>
+    {{/each}}
+  </ul>
+</template>
+
+<template name="addWebsite">
+    Please add the website link and a short description in the following fields:
+    <br><br>
+
+      <form>
+        <div class="form-group">
+          <label for="websiteLinkLabel">Website link</label>
+          <input type="text" class="websiteLink form-control" id="tfWebsiteLiknId" placeholder="Link of the website">
+        </div>
+        <div class="form-group">
+          <label for="websiteDescLabel">Website Description</label>
+          <textarea class="websiteDesc form-control" id="tfWebsiteDescId" rows="3" placeholder="Description of the website"></textarea>
+        </div>
+
+        <button type="button" class="btn js_btn_websiteSubmitButton btn-success website-list-css">Submit </button>
+      </form>
+      <br><br><br>
+</template>
+
+<template name="navbar">
+  <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">WebSiteName</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">Page 1</a></li>
+      <li><a href="#">Page 2</a></li>
+      <li><a href="#">Page 3</a></li>
+    </ul>
+    {{>loginButtons}}
+  </div>
+</nav>
+</template>

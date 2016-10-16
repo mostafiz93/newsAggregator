@@ -1,0 +1,23 @@
+/* CSS declarations go here */
+
+.website-list-css{
+  float: right;
+}
+
+
+.btn_list_right{
+  width:auto;
+  height:30px;
+  margin: 5px;
+}
+
+.list-group-item{
+  width: auto;
+  height: 120px;
+  margin: 15px;
+  padding: 20px;
+}
+
+.btn_collection{
+  align-content: center;
+}
