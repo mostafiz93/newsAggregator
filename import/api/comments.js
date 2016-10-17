@@ -1,4 +1,4 @@
-Comments = new Mongo.Collection("comments");
+export const Comments = new Mongo.Collection("comments");
 Comments.allow({
   insert: function(){
     return true;

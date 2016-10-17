@@ -23,13 +23,13 @@
 </template>
 
 <template name="websiteList">
-  <h2 >Most popular websites around you:  {{testParam}}</h2>
+  <h2 >Most popular websites around you: </h2>
 
   <ul class="list-group">
-    {{#each websites}}
+    {{#each webSites}}
       <li class="list-group-item">
         <div class="col-md-8">
-          <a href={{link}}>{{link}}</a><br>
+          <a href={{ getUrl _id}}>{{link}}</a><br>
           Created by: <b>{{getuser author}}</b>  On : {{createdAt}}<br>
            Upvote = <b>{{upvote}}</b> , Downvote = <b>{{downvote}}</b><br>
            {{desc}}
@@ -77,13 +77,10 @@
   <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">WebSiteName</a>
+      <a class="navbar-brand" href="/">WebSiteName</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">Page 1</a></li>
-      <li><a href="#">Page 2</a></li>
-      <li><a href="#">Page 3</a></li>
+      <li class="active"><a href="/">Home</a></li>
     </ul>
     {{>loginButtons}}
   </div>

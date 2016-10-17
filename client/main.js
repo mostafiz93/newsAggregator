@@ -4,7 +4,6 @@ import { ReactiveVar } from 'meteor/reactive-var';
 
 import {Websites} from "/import/api/websites.js";
 
-import './main.html';
 
 Accounts.ui.config({
   passwordSignupFields: "USERNAME_AND_OPTIONAL_EMAIL"
@@ -13,18 +12,20 @@ Accounts.ui.config({
 console.log("total websites : " + Websites.find().count());
 
 Template.websiteList.helpers({
-  websites: function(){
+  webSites: function(){
     console.log("list size = " + Websites.find().count());
     return Websites.find({}, {sort:{upvote:-1}});
+  },
+  getUrl: function(id){
+    return "post/" + id;
   },
   getuser: function(userid){
     var user = Meteor.users.findOne({_id: userid});
     if(user){
-      console.log(user);
       if(user.username)
         return user.username;
       else
-        return user.emails[0].address + " [Username not provided]";
+        return "No username provided";//user.emails[0].address + " [Username not provided]";
     }
     else return "annonymus";
   }
