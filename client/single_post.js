@@ -52,12 +52,16 @@ Template.addComment.events({
   "click .js_btn_submit": function(event){
     var name = document.getElementById("tfName").value;
     var comment = document.getElementById("tfComment").value;
-    console.log(name + " " + comment);
+    var postID = document.getElementById("post_id").value;
+    console.log(postID + "   xx ");
+
     Comments.insert({
+      postID: postID,
       name: name,
       comment: comment,
       createdAt: new Date
     });
+
     document.getElementById("commentForm").reset();
   }
 });
@@ -66,7 +70,8 @@ Template.showAllComments.helpers({
   rendered: function(){
 
   },
-  allComments: function(){
-    return Comments.find();
+  allComments: function(postID){
+    console.log(postID);
+    return Comments.find({postID:postID});
   }
 });

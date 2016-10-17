@@ -19,6 +19,7 @@
       <p>By: {{getPostAuthor postID}},  On: {{getPostCreatedAT postID}}</p>
       Upvotes: {{getPostUpvote postID}}, Downvotes: {{getPostDownvote postID}}
       <br>
+      <input type="hidden" id="post_id" value={{postID}}>
       <h3>
         {{getPostDesc postID}}
       </h3>
@@ -54,7 +55,7 @@
 
   </div>
   <div class="col-md-7">
-    {{#each allComments}}
+    {{#each allComments postID}}
       By : {{name}}
       On : {{createdAt}}
       <h3> {{comment}} </h3>
